@@ -1,10 +1,15 @@
 extends layout
 
 block content
-
+    -data = data || {}
+    if errors
+        ul
+            for error in errors
+                li = error.msg
+    
     form(action="." method="POST")
         label(for="name") Name :
-        input(type="text", name="name" id="name")
+        input(type="text", name="name" id="name" value=data.name)
         label(for="email") Email:
-        input(type="text" id="email" name="email")
+        input(type="text" id="email" name="email" value=data.email)
         input(type="submit" value="Submit") 
